@@ -115,7 +115,50 @@ public class SimplifiedOkeyGame {
      * TODO: Current computer player will discard the least useful tile.
      * you may choose based on how useful each tile is
      */
+
+     /*
+      * Done: Implementation is not optimal but efficient. 
+      * It looks at the first and last chain of tiles. 
+      * If the first chain is shorter, first element is deleted. 
+      * Otherwise, last element is deleted.
+      */
     public void discardTileForComputer() {
+
+        int leftCounter = 1;
+        int rightCounter = 1;
+
+        for(int i = 0; i<14; i++)
+        {
+            if(players[getCurrentPlayerIndex()].getTiles()[i+1].getValue() == players[getCurrentPlayerIndex()].getTiles()[i].getValue()+1)
+            {
+                leftCounter ++;
+            }
+            else
+            {
+                break;
+            }
+
+        }
+        for(int i = 13; i>=0; i++)
+        {
+            if(players[getCurrentPlayerIndex()].getTiles()[i+1].getValue() == players[getCurrentPlayerIndex()].getTiles()[i].getValue()+1)
+            {
+                rightCounter ++;
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        if(leftCounter<rightCounter)
+        {
+            discardTile(0);
+        }
+        else
+        {
+            discardTile(14);
+        }
     }
 
     /*

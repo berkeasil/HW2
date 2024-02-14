@@ -82,8 +82,16 @@ public class SimplifiedOkeyGame {
      * TODO: check if game still continues, should return true if current player
      * finished the game. use checkWinning method of the player class to determine
      */
+
+     //DONE, checks if the current player wins or if there are still enough tiles to play with
     public boolean didGameFinish() {
-        return false;
+        boolean isFinished = false;
+
+        if (players[currentPlayerIndex].checkWinning() || !hasMoreTileInStack()) {
+            isFinished = true;
+        }
+
+        return isFinished;
     }
 
     /* TODO: finds the player who has the highest number for the longest chain

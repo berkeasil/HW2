@@ -108,7 +108,6 @@ public class SimplifiedOkeyGame {
      * by checking if it increases the longest chain length, if not get the top tile
      */
     public void pickTileForComputer() {
-
     }
 
     /*
@@ -124,6 +123,15 @@ public class SimplifiedOkeyGame {
       */
     public void discardTileForComputer() {
 
+        for(int i = 0; i<14; i++)
+        {
+            if(players[getCurrentPlayerIndex()].getTiles()[i+1].getValue()== players[getCurrentPlayerIndex()].getTiles()[i].getValue())
+            {
+                discardTile(i);
+                return;
+            }
+        }
+        
         int leftCounter = 1;
         int rightCounter = 1;
 

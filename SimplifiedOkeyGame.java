@@ -74,8 +74,19 @@ public class SimplifiedOkeyGame {
     /*
      * TODO: should randomly shuffle the tiles array before game starts
      */
+    //DONE, turns tiles array into an ArrayList of tiles, uses Collections class to shuffle and reassigns shuffled values to the tiles array
     public void shuffleTiles() {
+        ArrayList<Tile> tilesArrayList = new ArrayList<Tile>();
 
+        for (int i = 0; i < tilesArrayList.size(); i++) {
+            tilesArrayList.add(tiles[i]);
+        }
+
+        Collections.shuffle(tilesArrayList);
+
+        for (int i = 0; i < tiles.length; i++) {
+            tiles[i] = tilesArrayList.get(i);
+        }
     }
 
     /*

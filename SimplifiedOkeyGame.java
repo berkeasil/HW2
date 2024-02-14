@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class SimplifiedOkeyGame {
 
     Player[] players;
@@ -87,8 +89,54 @@ public class SimplifiedOkeyGame {
     /* TODO: finds the player who has the highest number for the longest chain
      * if multiple players have the same length may return multiple players
      */
-    public Player[] getPlayerWithHighestLongestChain() {
-        Player[] winners = new Player[1];
+    
+    //finds the longest chain of the given player
+     public int longestChainLength(Player player)
+    {
+        int counter = 1;
+        int longestChain = 1;
+
+        for(int i = 0; i<14; i++)
+        {
+            if(player.getTiles()[i].getValue() + 1 == player.getTiles()[i+1].getValue())
+            {
+                counter++;
+            }
+            else
+            {
+                longestChain = Math.max(longestChain,counter);
+                counter = 1;
+            }
+        }
+
+        return longestChain;
+    }
+    //Length of the longest chain among the longest chains of players is found, 
+    //then ones that have the longest are added to the winners list
+     public Player[] getPlayerWithHighestLongestChain() {
+        Player winners[];
+        ArrayList<Integer> bests = new ArrayList<Integer>();
+        int longestChain=0;
+        
+        for(int i = 0; i<4; i++)
+        {
+            longestChain = Math.max(longestChain, longestChainLength(players[i]));
+        }
+
+
+        for(int i = 0; i<4; i++)
+        {
+            if(longestChainLength(players[i]) == longestChain)
+            {
+                bests.add(i);
+            }
+        }
+
+        winners = new Player[bests.size()];
+        for(int i = 0;i<winners.length;i++)
+        {
+            winners[i] = players[bests.get(i)];
+        }
 
         return winners;
     }

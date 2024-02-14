@@ -8,6 +8,8 @@ public class SimplifiedOkeyGame {
 
     int currentPlayerIndex = 0;
 
+    int indexOfLastTile = 0; // ekstra ekledim
+
     public SimplifiedOkeyGame() {
         players = new Player[4];
     }
@@ -32,7 +34,15 @@ public class SimplifiedOkeyGame {
      * other players get 14 tiles, this method assumes the tiles are already shuffled
      */
     public void distributeTilesToPlayers() {
-
+        //DONE
+        for (int i = 0; i < players.length; i++) {
+            for (int j = 0; j < 14; j++) {
+                players[i].addTile(tiles[indexOfLastTile]);
+                indexOfLastTile++;
+            }
+        }
+        players[0].addTile(tiles[indexOfLastTile]);
+        indexOfLastTile++;
     }
 
     /*
@@ -41,7 +51,9 @@ public class SimplifiedOkeyGame {
      * it should return the toString method of the tile so that we can print what we picked
      */
     public String getLastDiscardedTile() {
-        return null;
+        //DONE
+        players[currentPlayerIndex].addTile(lastDiscardedTile);
+        return lastDiscardedTile.toString();
     }
 
     /*

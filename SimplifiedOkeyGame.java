@@ -116,7 +116,6 @@ public class SimplifiedOkeyGame {
      * you may choose based on how useful each tile is
      */
     public void discardTileForComputer() {
-
     }
 
     /*
@@ -124,9 +123,20 @@ public class SimplifiedOkeyGame {
      * this should set lastDiscardedTile variable and remove that tile from
      * that player's tiles
      */
+
+     /*
+      * Done: Discarded tile is deleted 
+      * by shifting all elements to left by 1 
+      * and making the last element null
+      */
     public void discardTile(int tileIndex) {
         lastDiscardedTile = players[getCurrentPlayerIndex()].getTiles()[tileIndex];
-        players[getCurrentPlayerIndex()].getTiles()[tileIndex] = null;
+        for(int i = tileIndex; i<14; i++)
+        {
+            players[getCurrentPlayerIndex()].getTiles()[i] = players[getCurrentPlayerIndex()].getTiles()[i+1];
+        }
+
+        players[getCurrentPlayerIndex()].getTiles()[14] = null;
     }
 
     public void displayDiscardInformation() {

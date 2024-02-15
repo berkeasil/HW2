@@ -10,7 +10,7 @@ public class SimplifiedOkeyGame {
 
     int currentPlayerIndex = 0;
 
-    int indexOfLastTile = 0; // ekstra ekledim
+    int indexOfLastTile = 0; // counts index of tiles starting from 0
 
     public SimplifiedOkeyGame() {
         players = new Player[4];
@@ -163,8 +163,9 @@ public class SimplifiedOkeyGame {
     /*
      * checks if there are more tiles on the stack to continue the game
      */
+    //ü starts counting from 0 to 103 instead of reverse
     public boolean hasMoreTileInStack() {
-        return tileCount != 0;
+        return indexOfLastTile != 103;
     }
 
     /*

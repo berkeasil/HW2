@@ -109,7 +109,7 @@ public class SimplifiedOkeyGame {
      * if multiple players have the same length may return multiple players
      */
     
-    //finds the longest chain of the given player
+    //Additional Method: finds the longest chain of the given player
      public int longestChainLength(Player player)
     {
         int counter = 1;
@@ -130,7 +130,7 @@ public class SimplifiedOkeyGame {
 
         return longestChain;
     }
-    //Length of the longest chain among the longest chains of players is found, 
+    //Done: Length of the longest chain among the longest chains of players is found, 
     //then ones that have the longest are added to the winners list
      public Player[] getPlayerWithHighestLongestChain() {
         Player winners[];

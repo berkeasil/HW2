@@ -210,12 +210,11 @@ public class SimplifiedOkeyGame {
         //now checks whether length of the longest chain increased or not
         if(longestChainLength(copy)>longestChainLength(currentPlayer.getTiles()))
         {
-            currentPlayer.addTile(lastDiscardedTile);
+            getLastDiscardedTile();
         }
         else
         {
-            currentPlayer.addTile(tiles[indexOfLastTile]);
-            indexOfLastTile++;
+            getTopTile();
         }
     }
 

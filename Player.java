@@ -31,17 +31,30 @@ public class Player {
      * of consecutive numbers, used for checking the winning condition
      * and also for determining the winner if tile stack has no tiles
      */
+
+    //DONE ***
     public int findLongestChain() {
         int longestChain = 0;
-
+        SimplifiedOkeyGame sog = new SimplifiedOkeyGame();
+        longestChain =  sog.longestChainLength(this.playerTiles);
         return longestChain;
     }
 
     /*
      * TODO: removes and returns the tile in given index position
      */
+
+    //DONE
+    
     public Tile getAndRemoveTile(int index) {
-        return null;
+        Tile removedTile = this.playerTiles[ index ];
+        
+        for ( int i = index ; i <= 13; i++ ) {
+            this.playerTiles[ i ] = this.playerTiles [ i + 1 ];
+        }
+        this.playerTiles[ 14 ] = null;
+
+        return removedTile;
     }
 
     /*
@@ -49,7 +62,20 @@ public class Player {
      * this requires you to loop over the existing tiles to find the correct position,
      * then shift the remaining tiles to the right by one
      */
-    public void addTile(Tile t) {
+    //DONE
+    public void addTile( Tile t ) {
+        
+        int index = 0;
+        
+        while ( t.value > this.playerTiles[ index ].value ) {
+            index++;
+        }
+
+        for ( int i = 14 ; i >= index - 1; i-- ) {
+            this.playerTiles[ i ] = this.playerTiles [ i - 1 ];
+        }
+
+        this.playerTiles[ index ] = t;
 
     }
 

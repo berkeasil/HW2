@@ -109,19 +109,19 @@ public class SimplifiedOkeyGame {
      * if multiple players have the same length may return multiple players
      */
     
-    //Additional Method: finds the longest chain of the given player
-     public int longestChainLength(Player player)
+    //Additional Method: finds the longest chain of the given tile list with length 15
+     public int longestChainLength(Tile tiles[])
     {
         int counter = 1;
         int longestChain = 1;
 
         for(int i = 0; i<14; i++)
         {
-            if(player.getTiles()[i].getValue() + 1 == player.getTiles()[i+1].getValue())
+            if(tiles[i].getValue() + 1 == tiles[i+1].getValue())
             {
                 counter++;
             }
-            else
+            else if(tiles[i].getValue() != tiles[i+1].getValue())
             {
                 longestChain = Math.max(longestChain,counter);
                 counter = 1;
@@ -139,13 +139,13 @@ public class SimplifiedOkeyGame {
         
         for(int i = 0; i<4; i++)
         {
-            longestChain = Math.max(longestChain, longestChainLength(players[i]));
+            longestChain = Math.max(longestChain, longestChainLength(players[i].getTiles()));
         }
 
 
         for(int i = 0; i<4; i++)
         {
-            if(longestChainLength(players[i]) == longestChain)
+            if(longestChainLength(players[i].getTiles()) == longestChain)
             {
                 bests.add(i);
             }
@@ -174,7 +174,48 @@ public class SimplifiedOkeyGame {
      * you should check if getting the discarded tile is useful for the computer
      * by checking if it increases the longest chain length, if not get the top tile
      */
+
+     /*
+      * Done: Picking tile for the computer
+      */
     public void pickTileForComputer() {
+
+        //adding the discardedTile to players tile array in ascended order
+
+        Tile copy[] = new Tile[15];
+        Player currentPlayer = players[getCurrentPlayerIndex()];
+        boolean check = true;
+        for(int i = 0; i<15; i++)
+        {
+            if(check && lastDiscardedTile.getValue()<currentPlayer.getTiles()[i].getValue())
+            {
+                copy[i] =  lastDiscardedTile;
+                check = false;
+            }
+            else if(check)
+            {
+                copy[i] = currentPlayer.getTiles()[i];
+            }
+            else
+            {
+                copy[i] = currentPlayer.getTiles()[i-1];
+            }
+        }
+        if(check)
+        {
+            copy[14] = lastDiscardedTile;
+        }
+
+        //now checks whether length of the longest chain increased or not
+        if(longestChainLength(copy)>longestChainLength(currentPlayer.getTiles()))
+        {
+            currentPlayer.addTile(lastDiscardedTile);
+        }
+        else
+        {
+            currentPlayer.addTile(tiles[indexOfLastTile]);
+            indexOfLastTile++;
+        }
     }
 
     /*

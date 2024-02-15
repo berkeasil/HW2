@@ -19,6 +19,9 @@ public class Player {
      * check the assigment text for more details on winning condition
      */
     public boolean checkWinning() {
+        if(findLongestChain() == 14){
+            return true;
+        }
         return false;
     }
 

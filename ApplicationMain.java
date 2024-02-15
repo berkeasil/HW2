@@ -80,6 +80,17 @@ public class ApplicationMain {
 
                     // TODO: make sure the given index is correct, should be 0 <= index <= 14
 
+                    boolean isValidIndex = true;
+                    do{
+                        if(playerChoice >= 0 && playerChoice <= 14){
+                            isValidIndex = true;
+                        }
+                        else{
+                            System.out.println("Please enter a number between 0 and 14");
+                            sc.next();
+                        }
+                    }while(isValidIndex);
+
                     game.discardTile(playerChoice);
                     game.passTurnToNextPlayer();
                 }
@@ -92,6 +103,10 @@ public class ApplicationMain {
                         // TODO: the game ended with no more tiles in the stack
                         // determine the winner based on longest chain lengths of the players
                         // use getPlayerWithHighestLongestChain method of game for this task
+
+                        for (int i = 0; i < game.getPlayerWithHighestLongestChain().length; i++) {
+                            System.out.println(game.getPlayerWithHighestLongestChain()[i].getName() + " won the game");
+                        }
                     }
                 }
             }
@@ -120,6 +135,10 @@ public class ApplicationMain {
                         // TODO: the game ended with no more tiles in the stack
                         // determine the winner based on longest chain lengths of the players
                         // use getPlayerWithHighestLongestChain method of game for this task
+
+                        for (int i = 0; i < game.getPlayerWithHighestLongestChain().length; i++) {
+                            System.out.println(game.getPlayerWithHighestLongestChain()[i].getName() + " won the game");
+                        }
                     }
                 }
             }

@@ -12,31 +12,43 @@ public class Tile {
     }
 
     /*
-     * TODO: should check if the given tile t and this tile have the same value 
-     * return true if they are matching, false otherwise
+     * DONE: Checks if the given tile t and this tile have the same value 
+     * returns true if they are matching, false otherwise
      */
     public boolean matchingTiles(Tile t) {
-        return false;
+        return this.getValue() == t.getValue();
     }
 
     /*
-     * TODO: should compare the order of these two tiles
-     * return 1 if given tile has smaller in value
-     * return 0 if they have the same value
-     * return -1 if the given tile has higher value
+     * DONE: Compares the order of these two tiles
+     * returns 1 if given tile has smaller in value
+     * returns 0 if they have the same value
+     * returns -1 if the given tile has higher value
      */
     public int compareTo(Tile t) {
-       return 0;
+
+       if(this.getValue() > t.getValue())
+       {
+            return 1;
+       }
+       else if (this.getValue() < t.getValue())
+       {
+            return -1;
+       }
+       else 
+       {
+        return 0;
+       }
     }
 
     /*
-     * TODO: should determine if this tile and given tile can form a chain together
-     * this method should check the difference in values of the two tiles
-     * should return true if the absoulute value of the difference is 1 (they can form a chain)
-     * otherwise, it should return false (they cannot form a chain)
+     * DONE: Determines if this tile and given tile can form a chain together
+     * checks the difference in values of the two tiles
+     * returns true if the absoulute value of the difference is 1 (they can form a chain)
+     * otherwise, returns false (they cannot form a chain)
      */
     public boolean canFormChainWith(Tile t) {
-        return false;
+        return Math.abs(this.getValue() - t.getValue()) == 1;
     }
 
     public String toString() {

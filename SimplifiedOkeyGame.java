@@ -114,8 +114,8 @@ public class SimplifiedOkeyGame {
     {
         int counter = 1;
         int longestChain = 1;
-
-        for(int i = 0; i<14; i++)
+        //ğ changed 14 to 13 to escape null pointer
+        for(int i = 0; i<13; i++)
         {
             if(tiles[i].getValue() + 1 == tiles[i+1].getValue())
             {
@@ -186,7 +186,8 @@ public class SimplifiedOkeyGame {
         Tile copy[] = new Tile[15];
         Player currentPlayer = players[getCurrentPlayerIndex()];
         boolean check = true;
-        for(int i = 0; i<15; i++)
+        //changed 15 to 14 to escape null pointer
+        for(int i = 0; i<14; i++)
         {
             if(check && lastDiscardedTile.getValue()<currentPlayer.getTiles()[i].getValue())
             {

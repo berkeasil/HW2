@@ -256,7 +256,7 @@ public class SimplifiedOkeyGame {
             }
 
         }
-        for(int i = 13; i>=0; i++)
+        for(int i = 13; i>=0; i--)
         {
             if(players[getCurrentPlayerIndex()].getTiles()[i+1].getValue() == players[getCurrentPlayerIndex()].getTiles()[i].getValue()+1)
             {

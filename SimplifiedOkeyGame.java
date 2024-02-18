@@ -78,7 +78,7 @@ public class SimplifiedOkeyGame {
     public void shuffleTiles() {
         ArrayList<Tile> tilesArrayList = new ArrayList<Tile>();
 
-        for (int i = 0; i < tilesArrayList.size(); i++) {
+        for (int i = 0; i < tiles.length; i++) {
             tilesArrayList.add(tiles[i]);
         }
 

@@ -66,7 +66,7 @@ public class Player {
     public void addTile( Tile t ) {
 
 
-        if (numberOfTiles < 14) {
+        if (numberOfTiles < 15) {
             playerTiles[numberOfTiles] = t;
         }
         else {
@@ -84,7 +84,7 @@ public class Player {
 
         }
         
-        
+        numberOfTiles++;
 
     }
 

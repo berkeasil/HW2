@@ -84,7 +84,11 @@ public class Player {
 
         }
         
-        numberOfTiles++;
+        
+
+        if (numberOfTiles < 14) {
+            numberOfTiles++;
+        }
 
     }
 

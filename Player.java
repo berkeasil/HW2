@@ -64,18 +64,27 @@ public class Player {
      */
     //DONE
     public void addTile( Tile t ) {
-        
-        int index = 0;
-        
-        while ( t.value > this.playerTiles[ index ].value ) {
-            index++;
-        }
 
-        for ( int i = 14 ; i >= index - 1; i-- ) {
-            this.playerTiles[ i ] = this.playerTiles [ i - 1 ];
-        }
 
-        this.playerTiles[ index ] = t;
+        if (numberOfTiles < 14) {
+            playerTiles[numberOfTiles] = t;
+        }
+        else {
+            int index = 0;
+        
+            while ( t.value > this.playerTiles[ index ].value ) {
+                index++;
+            }
+    
+            for ( int i = 14 ; i >= index - 1; i-- ) {
+                this.playerTiles[ i ] = this.playerTiles [ i - 1 ];
+            }
+    
+            this.playerTiles[ index ] = t;
+
+        }
+        
+        
 
     }
 

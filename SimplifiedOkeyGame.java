@@ -127,6 +127,7 @@ public class SimplifiedOkeyGame {
                 counter = 1;
             }
         }
+        longestChain = Math.max(longestChain,counter);
 
         return longestChain;
     }

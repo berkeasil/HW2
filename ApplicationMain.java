@@ -76,19 +76,17 @@ public class ApplicationMain {
                     // if game continues we need to discard a tile using the given index by the player
                     System.out.println("Which tile you will discard?");
                     System.out.print("Discard the tile in index: ");
-
+                    playerChoice = sc.nextInt();
                     // TODO: make sure the given index is correct, should be 0 <= index <= 14
 
                     boolean isValidIndex = false;
                     do{
-                        playerChoice = sc.nextInt();
-
                         if(playerChoice >= 0 && playerChoice <= 14){
                             isValidIndex = true;
                         }
                         else{
                             System.out.println("Please enter a number between 0 and 14");
-                            sc.next();
+                            playerChoice = sc.nextInt();
                         }
                     }while(!isValidIndex);
 
@@ -105,9 +103,17 @@ public class ApplicationMain {
                         // determine the winner based on longest chain lengths of the players
                         // use getPlayerWithHighestLongestChain method of game for this task
 
-                        for (int i = 0; i < game.getPlayerWithHighestLongestChain().length; i++) {
-                            System.out.println(game.getPlayerWithHighestLongestChain()[i].getName() + " won the game");
+                        if(game.getPlayerWithHighestLongestChain().length == 1){
+                            System.out.println(game.getPlayerWithHighestLongestChain()[0].getName() + " won the game");
                         }
+                        else{
+                            System.out.print("The winners are: ");
+
+                            for (int i = 0; i < game.getPlayerWithHighestLongestChain().length; i++) {
+                                System.out.print(game.getPlayerWithHighestLongestChain()[i].getName());
+                            }
+                        }
+                        
                     }
                 }
             }
@@ -137,8 +143,15 @@ public class ApplicationMain {
                         // determine the winner based on longest chain lengths of the players
                         // use getPlayerWithHighestLongestChain method of game for this task
 
-                        for (int i = 0; i < game.getPlayerWithHighestLongestChain().length; i++) {
-                            System.out.println(game.getPlayerWithHighestLongestChain()[i].getName() + " won the game");
+                        if(game.getPlayerWithHighestLongestChain().length == 1){
+                            System.out.println(game.getPlayerWithHighestLongestChain()[0].getName() + " won the game");
+                        }
+                        else{
+                            System.out.print("The winners are: ");
+                            
+                            for (int i = 0; i < game.getPlayerWithHighestLongestChain().length; i++) {
+                                System.out.print(game.getPlayerWithHighestLongestChain()[i].getName());
+                            }
                         }
                     }
                 }

@@ -53,7 +53,7 @@ public class Player {
             this.playerTiles[ i ] = this.playerTiles [ i + 1 ];
         }
         this.playerTiles[ 14 ] = null;
-
+        this.decreaseNumberOfTiles();
         return removedTile;
     }
 
@@ -64,31 +64,27 @@ public class Player {
      */
     //DONE
     public void addTile( Tile t ) {
-
-
-        if (numberOfTiles < 15) {
-            playerTiles[numberOfTiles] = t;
-        }
-        else {
-            int index = 0;
         
-            while ( t.value > this.playerTiles[ index ].value ) {
-                index++;
+        boolean check = true;
+        for(int i = this.numberOfTiles-1; i>-1; i--)
+        {
+            if(playerTiles[i].getValue()<t.getValue())
+            {
+                playerTiles[i+1] = t;
+                check = false;
+                break;
             }
-    
-            for ( int i = 14 ; i >= index - 1; i-- ) {
-                this.playerTiles[ i ] = this.playerTiles [ i - 1 ];
+            else
+            {
+                playerTiles[i+1] = playerTiles[i];
             }
-    
-            this.playerTiles[ index ] = t;
-
+        }
+        if(check)
+        {
+            playerTiles[0] = t;
         }
         
-        
-
-        if (numberOfTiles < 14) {
-            numberOfTiles++;
-        }
+        this.increaseNumberOfTiles();
 
     }
 
@@ -126,5 +122,15 @@ public class Player {
 
     public String getName() {
         return playerName;
+    }
+
+    public void increaseNumberOfTiles()
+    {
+        this.numberOfTiles++;
+    }
+
+    public void decreaseNumberOfTiles()
+    {
+        this.numberOfTiles--;
     }
 }

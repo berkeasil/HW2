@@ -290,13 +290,15 @@ public class SimplifiedOkeyGame {
       * and making the last element null
       */
     public void discardTile(int tileIndex) {
-        lastDiscardedTile = players[getCurrentPlayerIndex()].getTiles()[tileIndex];
+        Player currentPlayer = players[getCurrentPlayerIndex()];
+        lastDiscardedTile = currentPlayer.getTiles()[tileIndex];
         for(int i = tileIndex; i<14; i++)
         {
-            players[getCurrentPlayerIndex()].getTiles()[i] = players[getCurrentPlayerIndex()].getTiles()[i+1];
+            currentPlayer.getTiles()[i] = currentPlayer.getTiles()[i+1];
         }
 
         players[getCurrentPlayerIndex()].getTiles()[14] = null;
+        currentPlayer.decreaseNumberOfTiles();
     }
 
     public void displayDiscardInformation() {
